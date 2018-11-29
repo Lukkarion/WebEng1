@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Blogger</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script async defer src="https://apis.google.com/js/api.js"></script> 
+        <script src="./js/login.js" defer></script>
+        <script src="./js/model.js" defer></script>
+        <script src="./js/presenter.js" defer></script>
+        <script src="./js/router.js" defer></script>
+    </head>
+    <body>        
+        <header>
+            <button id="sign-in-or-out-button">Anmelden</button>
+            <div id="auth-status"></div>
+            <h1 id="nutzerUeberschrift">Nutzer</h1>
+            <nav>
+                <ul>
+                    <li><a href="html/index.hmtl">Blog1</a>
+                    </li>
+                    <li><a href="html/index.hmtl">Blog2</a>
+                    </li>
+                </ul>
+            </nav>
+            <div>
+                <h2 id="blogTitle"><a>BlogTitle</a><span>(3)</span></h2>
+                <div>Datum</div>
+            </div>
+        </header>
+       
+        <!-- PostUebersicht -->
+        <main>
+            <button id="newBlog">Add New Post</button>
+            <article>
+                <h3><a>PostTitle</a></h3>
+                <div>Datum</div>
+                    <img src="https://via.placeholder.com/300x150" alt="Bild" /><aside>10</aside>
+                    <nav>
+                        <ul>
+                            <li><a href="html/index.hmtl">Edit</a>
+                            <li><a href="html/index.hmtl">Delete</a>
+                        </ul>
+                    </nav>                    
+            </article>
+            <article>
+                <h2><a>PostTitle</a></h2>
+                <div>Datum</div>
+                    <img src="https://via.placeholder.com/300x150" alt="Bild" /><aside>10</aside>
+                    <nav>
+                        <ul>
+                            <li><a href="html/index.hmtl">Edit</a>
+                            <li><a href="html/index.hmtl">Delete</a>
+                            <li><a href="html/index.hmtl">Add</a>
+                        </ul>
+                    </nav>                    
+            </article>
+        </main>
+        
+      <!--  DetailAnsichtPost -->
+      <main>
+        <button>zurueck</button>
+        <article>
+              <header>
+                  <h3>TitlePost</h3>
+                  <span>Datum</span>                  
+              </header>
+              <p>Text</p>
+        </article>
+              <div>
+                  <ul>
+                      <li>                                                
+                        <h5>Autor</h5>
+                        <div>Datum</div>                
+                        <p>Inhalt</p>
+                        <button>Delete</button>
+                      </li>
+                      <li>                          
+                        <h5>Autor2</h5>
+                        <div>Datum</div>                
+                        <p>Inhalt2</p>
+                        <button>Delete</button>
+                      </li>
+                  </ul>    
+              </div>         
+      </main>
+    </body>
+</html>
