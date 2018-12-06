@@ -18,8 +18,10 @@ const presenter = {
             this.owner  = result.displayName;
             console.log(`Nutzer ${this.owner} hat sich angemeldet.`);
             this.blogId = 1;
-            });
             
+            document.querySelector('h1').innerHTML = this.owner;
+            });
+                        
             model.getAllBlogs((result) => {
                 console.log(result);
                 this.blogId = result[0].id;

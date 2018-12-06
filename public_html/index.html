@@ -34,6 +34,7 @@ and open the template in the editor.
                 <div>Datum (Letzte Aktualisierung des Blogs)</div>
             </div>
        </header>
+       
        <hr>
         
        <main id="content">
@@ -44,34 +45,47 @@ and open the template in the editor.
       <footer>
       </footer>
       
-      <div id="templates">
+      <div id="templates" hidden>
         <!-- BlogPostUebersicht -->
         <div id="blog">
+        	<button id="showBlog">Show Blog</button>
             <button id="newBlog">Add New Post</button>
             
             <article>
+                <header>
                 <h3><a>PostTitle</a></h3>
-                <div>ErstellungsDatum (updated: Letzte Aktualisierung)</div>
+                ErstellungsDatum (updated: Letzte Aktualisierung)
+                </header>
+                
                     <img src="https://via.placeholder.com/300x150" alt="Bild" />
                     <aside>10 [Anzahl der Kommentare]</aside>
+                    
+                   <footer>
                     <nav>
                         <ul>
                             <li><a href="html/index.hmtl">Edit</a>
                             <li><a href="html/index.hmtl">Delete</a>
                         </ul>
-                    </nav>                    
+                    </nav>           
+                   </footer>         
             </article>
             <article>
+                <header>
                 <h3><a>PostTitle</a></h3>
-                <div>ErstellungsDatum (updated: Letzte Aktualisierung)</div>
+                ErstellungsDatum (updated: Letzte Aktualisierung)
+                </header>
+                
                     <img src="https://via.placeholder.com/300x150" alt="Bild" />
                     <aside>10 [Anzahl der Kommentare]</aside>
+                    
+                   <footer>
                     <nav>
                         <ul>
                             <li><a href="html/index.hmtl">Edit</a>
                             <li><a href="html/index.hmtl">Delete</a>
                         </ul>
-                    </nav>                    
+                    </nav>           
+                   </footer>         
             </article>
         </div>
         <hr>
@@ -84,23 +98,37 @@ and open the template in the editor.
                   <span>ErstellungsDatum (updated: Letzte Aktualisierung des Posts)</span>                  
               </header>
               <div id="post-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+        	<footer>
+        	    <nav>
+                   <ul>
+                      <li><a href="html/index.hmtl">Edit</a>
+                      <li><a href="html/index.hmtl">Delete</a>
+                   </ul>
+                </nav> 
+             </footer>
         </article>
-              <div id="comments">
-                  <ul>
-                      <li>                                                
+                  <article>             
+                  	<header>                                  
                         <h5>Autor</h5>
-                        <div>Datum des Kommentars</div>                
+                        Datum des Kommentars      
+                    </header>         
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+                    <footer>    
                         <button>Delete</button>
-                      </li>
-                      <li>                          
-                        <h5>Autor2</h5>
-                        <div>Datum des Kommentars</div>                
+                    </footer>
+                  </article>
+                  
+                  <article>             
+                  	<header>                                  
+                        <h5>Autor</h5>
+                        Datum des Kommentars      
+                    </header>         
                         <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
+                    <footer>    
                         <button>Delete</button>
-                      </li>
-                  </ul>    
-              </div>         
+                    </footer>
+                  </article>
+                      
       </div>
       </div>
     </body>
