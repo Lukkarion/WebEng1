@@ -23,15 +23,15 @@ and open the template in the editor.
             <h1>Nutzer</h1>
             <nav>
                 <ul>
-                    <li><a href="html/index.hmtl">Blog1</a>
+                    <li><a href="html/index.hmtl">%name</a>
                     </li>
-                    <li><a href="html/index.hmtl">Blog2</a>
+                    <li><a href="html/index.hmtl">%name</a>
                     </li>
                 </ul>
             </nav>
             <div>
-                <h2><a>BlogTitle </a><span>(2 [Anzahl der Posts])</span></h2>
-                <div>Datum (Letzte Aktualisierung des Blogs)</div>
+                <h2><a>%name</a><span>(%totalItems)</span></h2>
+                <div>%published (%updated)</div>
             </div>
        </header>
        
@@ -53,12 +53,12 @@ and open the template in the editor.
             
             <article>
                 <header>
-                <h3><a>PostTitle</a></h3>
-                ErstellungsDatum (updated: Letzte Aktualisierung)
+                <h3><a>%title</a></h3>
+                <div>%published (updated: %updated)</div>
                 </header>
                 
                     <img src="https://via.placeholder.com/300x150" alt="Bild" />
-                    <aside>10 [Anzahl der Kommentare]</aside>
+                    <aside>%totalItems</aside>
                     
                    <footer>
                     <nav>
@@ -71,12 +71,12 @@ and open the template in the editor.
             </article>
             <article>
                 <header>
-                <h3><a>PostTitle</a></h3>
-                ErstellungsDatum (updated: Letzte Aktualisierung)
+                 <h3><a>%title</a></h3>
+                <div>%published (updated: %updated)</div>
                 </header>
                 
                     <img src="https://via.placeholder.com/300x150" alt="Bild" />
-                    <aside>10 [Anzahl der Kommentare]</aside>
+                    <aside>%totalItems</aside>
                     
                    <footer>
                     <nav>
@@ -94,10 +94,10 @@ and open the template in the editor.
         <button>zurueck</button>
         <article>
               <header>
-                  <h3>TitlePost</h3>
-                  <span>ErstellungsDatum (updated: Letzte Aktualisierung des Posts)</span>                  
+                  <h3>%title</h3>
+                  <span>%published (updated: %updated)</span>                  
               </header>
-              <div id="post-content">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</div>
+              <div id="post-content">%content</div>
         	<footer>
         	    <nav>
                    <ul>
@@ -109,22 +109,22 @@ and open the template in the editor.
         </article>
                   <article>             
                   	<header>                                  
-                        <h5>Autor</h5>
-                        Datum des Kommentars      
+                        <h5>%displayName</h5>
+                        <div>%published</div>     
                     </header>         
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-                    <footer>    
+                      <p>%content</p>
+                        <footer>    
                         <button>Delete</button>
                     </footer>
                   </article>
                   
                   <article>             
                   	<header>                                  
-                        <h5>Autor</h5>
-                        Datum des Kommentars      
+                        <h5>%displayName</h5>
+                        <div>%published</div>     
                     </header>         
-                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et</p>
-                    <footer>    
+                      <p>%content</p>
+                        <footer>    
                         <button>Delete</button>
                     </footer>
                   </article>
