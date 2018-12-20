@@ -1,5 +1,5 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
+/*
+0 * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -21,9 +21,11 @@ const presenter = {
             
             document.querySelector('h1').innerHTML = this.owner;
             });
+            
                         
             model.getAllBlogs((result) => {
                 console.log(result);
+                
                 this.blogId = result[0].id;
                 console.log(this.blogId);
             
@@ -32,8 +34,10 @@ const presenter = {
                 console.log(blog.updated);
                 console.log(this.owner);
                 console.log(this.formatDate(true, blog.updated));
-                console.log(this.renderPostsOfBlog(this.blogId));
+                console.log(this.renderPostsOfBlog(this.blogId)); 
+                this.showBlog();
             });
+            
             
 
         } 
@@ -42,19 +46,61 @@ const presenter = {
             this.blogId = -1;
             this.owner = undefined;
         }
+        
+    },
+    
+    showBlog() {
+        console.log("Presenter: anzeigen eines Blogs");
+        
+            console.log(this.blogId);
+            model.getAllBlogs((result) => {
+                
+                let page = blogView.render(result[0]);
+                this.replace(page);
+            })
+    
+    },
+    
+    showPost(id){
+        console.log("Presenter: anzeigen der Detailansicht eines Posts");
+        let blog;
+        model.getBlog(this.blogId, (result) => {
+           blog = result; 
+           console.log("Blog:" + blog);
+        });
+        let postId;
+        model.getPost(blog, (result) => {
+           postId = result;
+        });
+        
+        console.log(postId);
+        model.getPost(id, (result) => {
+           let page = postView.render(result);
+           this.replace(page);
+        });
+    },
+    
+    replace(page) {
+        let main = document.getElementById('main-content');
+        let content = main.firstElementChild;
+        if(content){
+           content.remove();
+        }
+        if(page){
+            main.append(page);
+        }
     },
 
     // Gibt den Post mit der Id bid aus
-    renderPostsOfBlog(bid) {
-        model.getAllPostsOfBlog(bid, (posts) => {
-            console.log(posts);
-            for(let p of posts){
-                console.log(p.title);
-                console.log(p.updated);
-                console.log(p.content);
-            }
+     renderPostsOfBlog(bid) {
+        model.getAllPostsOfBlog(bid, (result) => {
+                for (let post of result) {
+                    console.log(post.title);
+                    console.log(post.updated);
+                    console.log(post.content);
+                }
         });
-    },
+     },
 
     // Formatiert den Datum-String in date in zwei mögliche Datum-Strings: 
     // long = false: 24.10.2018

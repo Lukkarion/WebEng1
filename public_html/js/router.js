@@ -16,6 +16,7 @@ const router = {
     
     // Wird aufgerufen, wenn zu einer anderen Adresse navigiert werden soll
     navigateToPage(url){
+        console.log("navigate to page");
         history.pushState(null, "", url);
         this.handleRouting();
     },
@@ -44,6 +45,15 @@ const router = {
     router.addRoute('', function () {
         console.log("Router: Aufruf von initPage");
         presenter.initPage();
+    });
+    
+    router.addRoute('blogView', function () {
+        presenter.showBlog();
+    });
+    
+    router.addRoute('postView' , function() {
+        var id = window.location.pathname.split('/post/')[1].trim();
+        presenter.showPost(id);
     });
     
     //Methoden an den router binden

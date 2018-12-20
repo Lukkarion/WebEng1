@@ -64,6 +64,7 @@ const model = {
     
     //Liefert den lokal gespeicherten Blog zu der bid
     getBlog(bid) {
+        console.log("getBlog");
         return this.blogMap.get(bid);
     },
     
