@@ -15,6 +15,7 @@ and open the template in the editor.
         <script src="./js/model.js" defer></script>
         <script src="./js/presenter.js" defer></script>
         <script src="./js/router.js" defer></script>
+        <script src="./js/view.js" defer></script>
     </head>
     <body>        
         <header id="head">
@@ -23,9 +24,7 @@ and open the template in the editor.
             <h1>Nutzer</h1>
             <nav>
                 <ul>
-                    <li><a href="html/index.hmtl">%name</a>
-                    </li>
-                    <li><a href="html/index.hmtl">%name</a>
+                    <li><a href="html/index.hmtl">blog1</a>
                     </li>
                 </ul>
             </nav>
@@ -35,25 +34,24 @@ and open the template in the editor.
             </div>
        </header>
        
-       <hr>
         
-       <main id="content">
+       <main>
+           <div id="main-content"></div>
        </main>
         
-       <hr>
         
       <footer>
       </footer>
       
-      <div id="templates" hidden>
+      <div id="templates" >
         <!-- BlogPostUebersicht -->
-        <div id="blog">
+        <div id="blogView">
         	<button id="showBlog">Show Blog</button>
             <button id="newBlog">Add New Post</button>
             
             <article>
                 <header>
-                <h3><a>%title</a></h3>
+                <h3><a href="/post">%title</a></h3>
                 <div>%published (updated: %updated)</div>
                 </header>
                 
@@ -63,26 +61,8 @@ and open the template in the editor.
                    <footer>
                     <nav>
                         <ul>
-                            <li><a href="html/index.hmtl">Edit</a>
-                            <li><a href="html/index.hmtl">Delete</a>
-                        </ul>
-                    </nav>           
-                   </footer>         
-            </article>
-            <article>
-                <header>
-                 <h3><a>%title</a></h3>
-                <div>%published (updated: %updated)</div>
-                </header>
-                
-                    <img src="https://via.placeholder.com/300x150" alt="Bild" />
-                    <aside>%totalItems</aside>
-                    
-                   <footer>
-                    <nav>
-                        <ul>
-                            <li><a href="html/index.hmtl">Edit</a>
-                            <li><a href="html/index.hmtl">Delete</a>
+                            <li>Edit</li>
+                            <li>Delete</li>
                         </ul>
                     </nav>           
                    </footer>         
@@ -90,7 +70,7 @@ and open the template in the editor.
         </div>
         <hr>
       <!--  PostDetailAnsicht -->
-      <div id="post">
+      <div id="postView">
         <button>zurueck</button>
         <article>
               <header>

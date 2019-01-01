@@ -29,7 +29,7 @@ const presenter = {
                 this.blogId = result[0].id;
                 console.log(this.blogId);
             
-                let blog = model.getBlog(this.blogId);
+                const blog = model.getBlog(this.blogId);
                 console.log(blog.name);
                 console.log(blog.updated);
                 console.log(this.owner);
