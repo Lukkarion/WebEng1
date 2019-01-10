@@ -53,8 +53,7 @@ const presenter = {
         console.log("Presenter: anzeigen eines Blogs");
         
             console.log(this.blogId);
-            model.getAllBlogs((result) => {
-                
+            model.getAllBlogs((result) => {        
                 let page = blogView.render(result[0]);
                 this.replace(page);
             })

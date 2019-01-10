@@ -6,12 +6,19 @@ const blogView = {
         
         let headPage = document.getElementById('head');
         helper.setDataInfo(headPage, data);
-        let page = document.getElementById('blogView').cloneNode(true);
+        helper.setDataInfo(headPage, data.pages);
+        let blogPost = document.getElementById("overview");
+        let articles = blogPost.getElementsByTagName('article');
+        console.log(articles);
+        for(let article of articles){
+            helper.setDataInfo(article, data.posts);
+        }
+        let page = document.getElementById('overview').cloneNode(true);
         page.removeAttribute("id");
         
         helper.setDataInfo(page, data);
-        let a = page.querySelector("a");
-        a.addEventListener("click", router.handleNavigationEvent());
+  //      let a = page.querySelector("a");
+//        a.addEventListener("click", router.handleNavigationEvent());
         return page;        
     }
 };

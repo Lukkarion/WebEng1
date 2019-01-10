@@ -32,84 +32,84 @@ and open the template in the editor.
                 <h2><a>%name</a><span>(%totalItems)</span></h2>
                 <div>%published (%updated)</div>
             </div>
-       </header>
-       
-        
-       <main>
-           <div id="main-content"></div>
-       </main>
-        
-        
-      <footer>
-      </footer>
-      
-      <div id="templates" >
-        <!-- BlogPostUebersicht -->
-        <div id="blogView">
-        	<button id="showBlog">Show Blog</button>
-            <button id="newBlog">Add New Post</button>
-            
-            <article>
-                <header>
-                <h3><a href="/post">%title</a></h3>
-                <div>%published (updated: %updated)</div>
-                </header>
-                
+        </header>
+
+
+        <main>
+            <div id="main-content"></div>
+        </main>
+
+
+        <footer>
+        </footer>
+
+        <div id="templates" >
+            <!-- BlogPostUebersicht -->
+            <div id="overview">
+                <button id="showBlog">Show Blog</button>
+                <button id="newBlog">Add New Post</button>
+
+                <article>
+                    <header>
+                        <h3><a href="/post">%title</a></h3>
+                        <div>%published (updated: %updated)</div>
+                    </header>
+
                     <img src="https://via.placeholder.com/300x150" alt="Bild" />
                     <aside>%totalItems</aside>
-                    
-                   <footer>
-                    <nav>
-                        <ul>
-                            <li>Edit</li>
-                            <li>Delete</li>
-                        </ul>
-                    </nav>           
-                   </footer>         
-            </article>
+
+                    <footer>
+                        <nav>
+                            <ul>
+                                <li>Edit</li>
+                                <li>Delete</li>
+                            </ul>
+                        </nav>           
+                    </footer>         
+                </article>
+            </div>
+            <hr>
+            <!--  PostDetailAnsicht -->
+            <div id="postView">
+                <button>zurueck</button>
+                <article>
+                    <header>
+                        <h3>%title</h3>
+                        <span>%published (updated: %updated)</span>                  
+                    </header>
+                    <div id="post-content">%content</div>
+                    <footer>
+                        <nav>
+                            <ul>
+                                <li><a href="html/index.hmtl">Edit</a>
+                                <li><a href="html/index.hmtl">Delete</a>
+                            </ul>
+                        </nav> 
+                    </footer>
+                </article>
+                <article>             
+                    <header>                                  
+                        <h5>%displayName</h5>
+                        <div>%published</div>     
+                    </header>         
+                    <p>%content</p>
+                    <footer>    
+                        <button>Delete</button>
+                    </footer>
+                </article>
+
+                <article>             
+                    <header>                                  
+                        <h5>%displayName</h5>
+                        <div>%published</div>     
+                    </header>         
+                    <p>%content</p>
+                    <footer>    
+                        <button>Delete</button>
+                    </footer>
+                </article>
+
+            </div>
         </div>
-        <hr>
-      <!--  PostDetailAnsicht -->
-      <div id="postView">
-        <button>zurueck</button>
-        <article>
-              <header>
-                  <h3>%title</h3>
-                  <span>%published (updated: %updated)</span>                  
-              </header>
-              <div id="post-content">%content</div>
-        	<footer>
-        	    <nav>
-                   <ul>
-                      <li><a href="html/index.hmtl">Edit</a>
-                      <li><a href="html/index.hmtl">Delete</a>
-                   </ul>
-                </nav> 
-             </footer>
-        </article>
-                  <article>             
-                  	<header>                                  
-                        <h5>%displayName</h5>
-                        <div>%published</div>     
-                    </header>         
-                      <p>%content</p>
-                        <footer>    
-                        <button>Delete</button>
-                    </footer>
-                  </article>
-                  
-                  <article>             
-                  	<header>                                  
-                        <h5>%displayName</h5>
-                        <div>%published</div>     
-                    </header>         
-                      <p>%content</p>
-                        <footer>    
-                        <button>Delete</button>
-                    </footer>
-                  </article>
-                      
-      </div>
-      </div>
     </body>
 </html>
