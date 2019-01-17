@@ -1,25 +1,34 @@
 "use strict";
 
-const blogView = {
-    render(data) {
-        console.log("View: render von blogView");
+const headView = {
+    render (data) {
+        console.log("View: render Header");
         
         let headPage = document.getElementById('head');
-        helper.setDataInfo(headPage, data);
-        helper.setDataInfo(headPage, data.pages);
-        let blogPost = document.getElementById("overview");
-        let articles = blogPost.getElementsByTagName('article');
-        console.log(articles);
-        for(let article of articles){
-            helper.setDataInfo(article, data.posts);
-        }
+        helper.setDataInfo(headPage, data[0]);
+        helper.setDataInfo(headPage, data[0].posts);
         let page = document.getElementById('overview').cloneNode(true);
         page.removeAttribute("id");
-        
+        let navi = document.getElementById("navigation");
+        for(let blog of data){
+            let li = navi.firstElementChild.cloneNode(true);
+            li.innerHTML = li.innerHTML.replace("%blog", blog.name);
+            navi.append(li);
+        }
+        navi.firstElementChild.remove();
         helper.setDataInfo(page, data);
   //      let a = page.querySelector("a");
 //        a.addEventListener("click", router.handleNavigationEvent());
-        return page;        
+        return page;  
+    }
+}
+const blogView = {
+    render(data) {
+        console.log("View: render von blogView");
+        console.log(data);
+        let post = document.querySelector('article').cloneNode(true);
+        console.log(post);
+        helper.setDataInfo(post, data);
     }
 };
 
@@ -43,14 +52,10 @@ const helper = {
     setDataInfo(element, object) {
         console.log("Ersetze daten");
         let cont = element.innerHTML;
-        console.log(cont);
         for(let key in object) {
             cont = cont.replace("%" + key, object[key]);   
         }
         element.innerHTML = cont;
-        
-        console.log(element);        
-        console.log(object);
     }
 };
 

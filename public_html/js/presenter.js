@@ -22,23 +22,11 @@ const presenter = {
             document.querySelector('h1').innerHTML = this.owner;
             });
             
-                        
             model.getAllBlogs((result) => {
-                console.log(result);
-                
                 this.blogId = result[0].id;
-                console.log(this.blogId);
-            
-                const blog = model.getBlog(this.blogId);
-                console.log(blog.name);
-                console.log(blog.updated);
-                console.log(this.owner);
-                console.log(this.formatDate(true, blog.updated));
-                console.log(this.renderPostsOfBlog(this.blogId)); 
+                this.showHead();
                 this.showBlog();
             });
-            
-            
 
         } 
         if(!model.loggedIn && this.blogId != -1) { // Wenn der Nuzter eingelogged war und sich abgemeldet hat
@@ -49,12 +37,19 @@ const presenter = {
         
     },
     
+    showHead() {
+        console.log("Presenter: anzeigen eines Blogs");
+            model.getAllBlogs((result) => {
+                let page = headView.render(result);
+                this.replace(page);
+            })
+    
+    },
+    
     showBlog() {
         console.log("Presenter: anzeigen eines Blogs");
-        
-            console.log(this.blogId);
-            model.getAllBlogs((result) => {        
-                let page = blogView.render(result[0]);
+            model.getAllPostsOfBlog(this.blogId, (result) => {
+                let page = blogView.render(result);
                 this.replace(page);
             })
     
