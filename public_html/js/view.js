@@ -7,8 +7,6 @@ const headView = {
         let headPage = document.getElementById('head');
         helper.setDataInfo(headPage, data[0]);
         helper.setDataInfo(headPage, data[0].posts);
-        let page = document.getElementById('overview').cloneNode(true);
-        page.removeAttribute("id");
         let navi = document.getElementById("navigation");
         for(let blog of data){
             let li = navi.firstElementChild.cloneNode(true);
@@ -16,19 +14,27 @@ const headView = {
             navi.append(li);
         }
         navi.firstElementChild.remove();
-        helper.setDataInfo(page, data);
+        helper.setDataInfo(headPage, data);
   //      let a = page.querySelector("a");
 //        a.addEventListener("click", router.handleNavigationEvent());
-        return page;  
+        return headPage;  
     }
 }
 const blogView = {
     render(data) {
         console.log("View: render von blogView");
         console.log(data);
-        let post = document.querySelector('article').cloneNode(true);
-        console.log(post);
-        helper.setDataInfo(post, data);
+        let all = document.getElementById("overview");
+        all.removeAttribute("id");
+        for(let i in data){
+           let post = document.querySelector('article').cloneNode(true);
+            helper.setDataInfo(post, data[i]);
+            helper.setDataInfo(post, data[i].replies);
+            all.append(post);
+        }
+        all.firstElementChild.remove();
+        
+        return all;
     }
 };
 
@@ -53,7 +59,7 @@ const helper = {
         console.log("Ersetze daten");
         let cont = element.innerHTML;
         for(let key in object) {
-            cont = cont.replace("%" + key, object[key]);   
+            cont = cont.replace("%" + key, object[key]);
         }
         element.innerHTML = cont;
     }

@@ -38,10 +38,9 @@ const presenter = {
     },
     
     showHead() {
-        console.log("Presenter: anzeigen eines Blogs");
+        console.log("Presenter: anzeigen eines Heads");
             model.getAllBlogs((result) => {
                 let page = headView.render(result);
-                this.replace(page);
             })
     
     },
@@ -75,6 +74,7 @@ const presenter = {
     },
     
     replace(page) {
+        console.log("replace page");
         let main = document.getElementById('main-content');
         let content = main.firstElementChild;
         if(content){
