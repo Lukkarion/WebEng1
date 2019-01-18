@@ -70,8 +70,7 @@ and open the template in the editor.
             <hr>
             <!--  PostDetailAnsicht -->
             <div id="postView">
-                <button>zurueck</button>
-                <article>
+                <div id="post">
                     <header>
                         <h3>%title</h3>
                         <span>%published (updated: %updated)</span>                  
@@ -85,7 +84,7 @@ and open the template in the editor.
                             </ul>
                         </nav> 
                     </footer>
-                </article>
+                </div>
                 <article>             
                     <header>                                  
                         <h5>%displayName</h5>
@@ -96,18 +95,6 @@ and open the template in the editor.
                         <button>Delete</button>
                     </footer>
                 </article>
-
-                <article>             
-                    <header>                                  
-                        <h5>%displayName</h5>
-                        <div>%published</div>     
-                    </header>         
-                    <p>%content</p>
-                    <footer>    
-                        <button>Delete</button>
-                    </footer>
-                </article>
-
             </div>
         </div>
     </body>

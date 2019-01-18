@@ -63,14 +63,14 @@ const model = {
     },
     
     //Liefert den lokal gespeicherten Blog zu der bid
-    getBlog(bid) {
+    getBlog(bid, callback) {
         console.log("getBlog");
-        return this.blogMap.get(bid);
+        callback( this.blogMap.get(bid));
     },
     
     //Liefert den lokal gespeicherten Post zu der pid
-    getPost(pid) {
-        return this.postMap.get(pid);
+    getPost(pid, callback) {
+        callback(this.postMap.get(pid));
     },
     
     // Liefert alle Kommentare zu dem Post pid im Blog bid

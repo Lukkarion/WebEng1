@@ -23,10 +23,14 @@ const presenter = {
             });
             
             model.getAllBlogs((result) => {
-                this.blogId = result[0].id;
+                this.blogId = result[2].id;
                 this.showHead();
-                this.showBlog();
+               // this.showBlog();
+                model.getAllPostsOfBlog(result[2].id, (result) => {
+                    this.showPost(result[0].id);
+                });
             });
+            
 
         } 
         if(!model.loggedIn && this.blogId != -1) { // Wenn der Nuzter eingelogged war und sich abgemeldet hat
@@ -54,23 +58,17 @@ const presenter = {
     
     },
     
-    showPost(id){
+    showPost(pid){
         console.log("Presenter: anzeigen der Detailansicht eines Posts");
-        let blog;
-        model.getBlog(this.blogId, (result) => {
-           blog = result; 
-           console.log("Blog:" + blog);
-        });
-        let postId;
-        model.getPost(blog, (result) => {
-           postId = result;
-        });
-        
-        console.log(postId);
-        model.getPost(id, (result) => {
-           let page = postView.render(result);
-           this.replace(page);
-        });
+        model.getPost(pid, (result) => {
+            console.log(result);
+            let page = postView.render(result);
+            model.getAllCommentsOfPost(this.blogId, pid, (result) => {
+                page.append(commentView.render(result));
+                console.log(page);
+                this.replace(page);
+            });
+        })  
     },
     
     replace(page) {
