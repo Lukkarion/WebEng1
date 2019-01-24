@@ -24,6 +24,7 @@ const model = {
         request.execute(callback);
     },
 
+
     // Liefert alle Blogs des angemeldeten Nutzers
     getAllBlogs(callback) {
         var request = gapi.client.request({

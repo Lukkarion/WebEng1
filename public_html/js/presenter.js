@@ -22,16 +22,22 @@ const presenter = {
             document.querySelector('h1').innerHTML = this.owner;
             });
             
-            model.getAllBlogs((result) => {
-                this.blogId = result[2].id;
-                this.showHead();
-               // this.showBlog();
-                model.getAllPostsOfBlog(result[2].id, (result) => {
-                    this.showPost(result[0].id);
-                });
+            model.getAllBlogs((result) => {     
+//                result.sort(function(a,b) {
+//                    if(a.updated < b.updated) return -1;
+//                    if(a.updated == b.updated) return 0;
+//                    if(a.updated > b.updated) return 1;
+//                });
+//                console.log(result[0].updated);
+//                console.log(result[1].updated);
+//                console.log(result[2].updated);
+                
+                router.navigateToPage("/blogView/" + result[2].id);
+                //model.getAllPostsOfBlog(result[2].id, (result) => {
+                //    this.showPost(result[0].id);
+                //});
             });
             
-
         } 
         if(!model.loggedIn && this.blogId != -1) { // Wenn der Nuzter eingelogged war und sich abgemeldet hat
             console.log(`Nutzer ${this.owner} hat sich abgemeldet.`);
@@ -49,9 +55,14 @@ const presenter = {
     
     },
     
-    showBlog() {
+    showBlog(bid) {
         console.log("Presenter: anzeigen eines Blogs");
-            model.getAllPostsOfBlog(this.blogId, (result) => {
+            console.log(bid);
+            model.getBlog(bid, (result) => {
+                blogInfos.render(result);
+            });
+            
+            model.getAllPostsOfBlog(bid, (result) => {
                 let page = blogView.render(result);
                 this.replace(page);
             })

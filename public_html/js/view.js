@@ -5,6 +5,7 @@ const headView = {
         console.log("View: render Header");
         
         let headPage = document.getElementById('head');
+        console.log(headPage);
         helper.setDataInfo(headPage, data[0]);
         helper.setDataInfo(headPage, data[0].posts);
         let navi = document.getElementById("navigation");
@@ -15,20 +16,39 @@ const headView = {
         }
         navi.firstElementChild.remove();
         helper.setDataInfo(headPage, data);
-  //      let a = page.querySelector("a");
-//        a.addEventListener("click", router.handleNavigationEvent());
+        
         return headPage;  
     }
-}
+};
+
+const blogInfos = {
+    render (data) {
+        let info = document.querySelector('main');
+        console.log(info);
+    }
+};
+
 const blogView = {
     render(data) {
+        
+        console.log(data);
+        let handleEvent = function (event) {
+           // event.preventDefault();
+            console.log("handle");
+            let tit = event.target.parentElement;
+            router.navigateToPage("/postView/" + tit.id);
+        };
+        
         console.log("View: render von blogView");
         let all = document.getElementById("overview");
         all.removeAttribute("id");
-        for(let i in data){
+        for(let p of data){
            let post = document.querySelector('article').cloneNode(true);
-            helper.setDataInfo(post, data[i]);
-            helper.setDataInfo(post, data[i].replies);
+            helper.setDataInfo(post, p);
+            helper.setDataInfo(post,p.replies);
+            let title = post.querySelector('h3');
+            title.setAttribute("id",`${p.id}`);
+            title.addEventListener("click", handleEvent);
             all.append(post);
         }
         all.firstElementChild.remove();

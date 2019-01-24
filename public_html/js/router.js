@@ -35,7 +35,7 @@ const router = {
         let routeHandler = this.mapRouteToHandler.get(currentPage);
         if (routeHandler === undefined)
             routeHandler = this.mapRouteToHandler.get(''); //Startseite
-        routeHandler();
+        routeHandler(window.location.pathname);
     }
 };
 
@@ -47,12 +47,13 @@ const router = {
         presenter.initPage();
     });
     
-    router.addRoute('blogView', function () {
-        presenter.showBlog();
+    router.addRoute('blogView', function (url) {
+        var id = url.split('/blogView/')[1].trim();
+        presenter.showBlog(id);
     });
     
-    router.addRoute('postView' , function() {
-        var id = window.location.pathname.split('/post/')[1].trim();
+    router.addRoute('postView' , function(url) {
+        var id = url.split('/postView/')[1].trim();
         presenter.showPost(id);
     });
     

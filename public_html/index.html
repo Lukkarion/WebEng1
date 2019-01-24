@@ -24,19 +24,19 @@ and open the template in the editor.
             <h1>Nutzer</h1>
             <nav>
                 <ul id="navigation">
-                    <li><a href="html/index.hmtl">%blog</a></li>
+                    <li>%blog</li>
                 </ul>
             </nav>
+                    </header>
+
+
+        <main>
             <div>
                 <h2><a>%name</a><span>(%totalItems)</span></h2>
                 <div>%published (%updated)</div>
             </div>
                 <button id="showBlog">Show Blog</button>
                 <button id="newBlog">Add New Post</button>
-        </header>
-
-
-        <main>
             <div id="main-content"></div>
         </main>
 
@@ -50,7 +50,7 @@ and open the template in the editor.
 
                 <article>
                     <header>
-                        <h3><a href="/post">%title</a></h3>
+                        <h3><a>%title</a></h3>
                         <div>%published (updated: %updated)</div>
                     </header>
 
@@ -95,6 +95,7 @@ and open the template in the editor.
                         <button>Delete</button>
                     </footer>
                 </article>
+                <div><a href="/blogView">Übersicht</a></div>
             </div>
         </div>
     </body>
