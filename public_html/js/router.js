@@ -34,7 +34,7 @@ const router = {
         let routeHandler = this.mapRouteToHandler.get(currentPage);
         if (routeHandler === undefined)
             routeHandler = this.mapRouteToHandler.get(''); //Startseite
-        routeHandler();
+        routeHandler(window.location.pathname);
     }
 };
 

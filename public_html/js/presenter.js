@@ -84,11 +84,11 @@ const presenter = {
             var options = {weekday: 'long', year: 'numeric', month: 'long',
                             day: 'numeric', hour: 'numeric', minute: 'numeric'};
             let text = dateObj.toLocaleDateString('de-DE', options);
-            return(text);
+            return text;
         }else{
             var options = {year: 'numeric', month: 'numeric', day: 'numeric'};
             let text = dateObj.toLocaleDateString('de-DE', options);
-            return(text);
+            return text;
         }
 
     },
