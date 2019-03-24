@@ -72,6 +72,15 @@ const presenter = {
             });
         });
     },
+    editPost(pid) {
+        if (pid) {
+            let post = model.getPost(pid);
+            this.replacePage(editView.render(post));
+            fillForm(post.title, post.content);
+        } else {
+            this.replacePage(editView.render(null));
+        }
+    },
     
     deleteComment(postId, commentId){
         model.deleteComment(this.blog.id, postId, commentId, function(){});

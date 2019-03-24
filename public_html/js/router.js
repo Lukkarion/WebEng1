@@ -67,6 +67,7 @@ const router = {
         window.addEventListener('popstate', (event) => {
             router.handleRouting();
         });
+        router.handleRouting();
     }
 })();
 

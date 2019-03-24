@@ -19,7 +19,9 @@ const headView = {
             console.log(link);
             link.addEventListener('click', router.handleNavigationEvent);
             navi.append(li);
-        }
+            li.setAttribute('href', 'blogView/' + blog.id);
+            li.addEventListener('click', router.handleNavigationEvent);
+        }   
         navi.firstElementChild.remove();
         
         return headPage;  
@@ -87,8 +89,15 @@ const postView = {
             comments.append(renderedComment);
         }
         const overviewLink = page.querySelector('#overviewLink');
-        overviewLink.setAttribute('href', '/blogView/' + presenter.blog.id);
+        overviewLink.setAttribute('href', 'blogView/' + presenter.blog.id);
         overviewLink.addEventListener('click', router.handleNavigationEvent);
+        
+        const editButton = page.querySelector('#editPost');
+        console.log(editButton);
+        editButton.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            presenter.editPost(data.id);
+        });
         
         const deleteButton = page.querySelector('#deletePost');
         deleteButton.addEventListener('click', (evt) => {
@@ -102,7 +111,7 @@ const postView = {
 
 const commentView = {
     render(data) {
-        console.log("View: render con commentView");
+        console.log("View: render von commentView");
         console.log(data);
         let comment = document.querySelector('#templates #commentView').cloneNode(true);
         helper.setDataInfo(comment, data);
@@ -117,10 +126,38 @@ const commentView = {
     }
 };
 
+
 const noPostView = {
     render() {
         return document.querySelector('#templates #noPosts').cloneNode(true);
     }
+}
+
+
+const editView = {
+    render(data) {
+        console.log("View: render von editView");        
+        let edit = document.querySelector('#templates #post-edit').cloneNode(true);
+        helper.setDataInfo(edit, data);       
+        return page;        
+    }
+}
+
+function fillForm(newTitle, newContent) {
+    let title = document.querySelector("#form-title-input");
+    let content = document.querySelector("#form-content-input");
+    title.value = newTitle;
+    content.value = newContent;
+}
+
+/** this should definitely be sanitized before using it! */
+function readForm() {
+    let title = document.querySelector("#form-title-input").value;
+    let content = document.querySelector("#form-content-input").value;
+    let obj = {};
+    obj.title = title;
+    obj.content = content;
+    return obj;
 }
 
 const helper = {
