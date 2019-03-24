@@ -74,9 +74,10 @@ const presenter = {
     },
     editPost(pid) {
         if (pid) {
-            let post = model.getPost(pid);
-            this.replacePage(editView.render(post));
-            fillForm(post.title, post.content);
+            let editpost = model.getPost(pid);
+            console.log(editpost);
+            this.replacePage(editView.render(editpost));
+            fillForm(editpost.title, editpost.content);
         } else {
             this.replacePage(editView.render(null));
         }

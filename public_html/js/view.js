@@ -64,6 +64,11 @@ const blogView = {
             helper.setDataInfo(post,p.replies);
             let title = post.querySelector('h3');
             title.addEventListener("click", createHandleEvent(p));
+            const editButton = post.querySelector('#editPost');
+            editButton.addEventListener('click', (evt) => {
+                evt.preventDefault();
+                presenter.editPost(p.id);
+            });
             const deleteButton = post.querySelector('#deletePost');
             deleteButton.addEventListener('click', (evt) => {
                 evt.preventDefault();
@@ -91,13 +96,6 @@ const postView = {
         const overviewLink = page.querySelector('#overviewLink');
         overviewLink.setAttribute('href', 'blogView/' + presenter.blog.id);
         overviewLink.addEventListener('click', router.handleNavigationEvent);
-        
-        const editButton = page.querySelector('#editPost');
-        console.log(editButton);
-        editButton.addEventListener('click', (evt) => {
-            evt.preventDefault();
-            presenter.editPost(data.id);
-        });
         
         const deleteButton = page.querySelector('#deletePost');
         deleteButton.addEventListener('click', (evt) => {
