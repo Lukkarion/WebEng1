@@ -36,10 +36,6 @@ and open the template in the editor.
             <div id="main-content"></div>
         </main>
 
-
-        <footer>
-        </footer>
-
         <div id="templates" >
             <!-- BlogPostUebersicht -->
             <div id="overview">
@@ -96,6 +92,29 @@ and open the template in the editor.
             <div id="noPosts">
                 <p>There are no posts!</p>
             </div>
+            <div id="post-edit">
+                <form id="post-edit-form" method="get">
+                    <ul>
+                        <li>
+                        <h2 class="author">%author</h2>
+                        </li>
+                    </ul>
+                     <ul>
+                        <li>
+                            <label id="form-title-label" for="title">Titel</label>
+                            <textarea id="form-title-input" type="text"></textarea>
+                        </li>
+                        <li>
+                            <label id="form-content-label" for="content">Inhalt</label>
+                            <textarea id="form-content-input" type="text"></textarea>
+                        </li>
+                        
+                    </ul>
+                </form>
+            </div>
         </div>
     </body>
+    
+    <footer>
+    </footer>
 </html>
