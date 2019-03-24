@@ -56,6 +56,15 @@ const router = {
         presenter.showPost(id);
     });
     
+    router.addRoute('editPost', function(url) {
+        var id = url.split('editPost/')[1].trim(); 
+        presenter.showEditPost(id);
+    });
+    
+    router.addRoute('createPost', function(url) {
+       presenter.showCreatePost(); 
+    });
+    
     //Methoden an den router binden
     for (let key in router) {
         if(typeof router[key] === "function") {
@@ -67,7 +76,6 @@ const router = {
         window.addEventListener('popstate', (event) => {
             router.handleRouting();
         });
-        router.handleRouting();
     }
 })();
 

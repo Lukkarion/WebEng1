@@ -41,6 +41,12 @@ const blogInfos = {
             presenter.showFullBlog();
         });
         
+        const createPostButton = info.querySelector('#createPost');
+        createPostButton.addEventListener('click', function(evt) {
+            evt.preventDefault();
+            router.navigateToPage('/createPost');
+        });
+        
         const main = document.querySelector('main');
         main.querySelector('#info').remove();
         main.insertBefore(info, main.firstChild);
@@ -67,7 +73,7 @@ const blogView = {
             const editButton = post.querySelector('#editPost');
             editButton.addEventListener('click', (evt) => {
                 evt.preventDefault();
-                presenter.editPost(p.id);
+                router.navigateToPage('/editPost/' + p.id);
             });
             const deleteButton = post.querySelector('#deletePost');
             deleteButton.addEventListener('click', (evt) => {
@@ -98,6 +104,11 @@ const postView = {
         overviewLink.addEventListener('click', router.handleNavigationEvent);
         
         const deleteButton = page.querySelector('#deletePost');
+        const editButton = page.querySelector('#editPost');
+            editButton.addEventListener('click', (evt) => {
+                evt.preventDefault();
+                router.navigateToPage('/editPost/' + data.id);
+            });
         deleteButton.addEventListener('click', (evt) => {
             evt.preventDefault();
             presenter.deletePost(data.id);
@@ -133,29 +144,28 @@ const noPostView = {
 
 
 const editView = {
-    render(data) {
+    render({ title = '', content = '', author = '', saveCallback = () => {} } = {}) {
         console.log("View: render von editView");        
         let edit = document.querySelector('#templates #post-edit').cloneNode(true);
-        helper.setDataInfo(edit, data);       
-        return page;        
+        helper.setDataInfo(edit, {title, content, author});
+        
+        const titleField = edit.querySelector('#title');
+        const contentField = edit.querySelector('#content');
+        
+        const saveButton = edit.querySelector('#save');
+        saveButton.addEventListener('click', (evt) => {
+           evt.preventDefault();
+           saveCallback(titleField.value, contentField.value);
+        });
+        
+        const cancelButton = edit.querySelector('#cancel');
+        cancelButton.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            router.navigateToPage('/blogView/' + presenter.blog.id);
+        });
+        
+        return edit;
     }
-}
-
-function fillForm(newTitle, newContent) {
-    let title = document.querySelector("#form-title-input");
-    let content = document.querySelector("#form-content-input");
-    title.value = newTitle;
-    content.value = newContent;
-}
-
-/** this should definitely be sanitized before using it! */
-function readForm() {
-    let title = document.querySelector("#form-title-input").value;
-    let content = document.querySelector("#form-content-input").value;
-    let obj = {};
-    obj.title = title;
-    obj.content = content;
-    return obj;
 }
 
 const helper = {

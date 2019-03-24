@@ -72,6 +72,36 @@ const presenter = {
             });
         });
     },
+    
+    showEditPost(postId) {
+        model.getPost(postId, (result) => {
+            console.log(result);
+            const page = editView.render({
+                author: this.owner,
+                title: result.title,
+                content: result.content,
+                saveCallback: (title, content) => {
+                    model.updatePost(this.blog.id, postId, title, content, () => {
+                       router.navigateToPage('/blogView/' + this.blog.id); 
+                    });
+                }
+            });
+            this.replace(page);
+        });
+    },
+    
+    showCreatePost() {
+        const page = editView.render({
+            author: this.owner,
+            saveCallback: (title, content) => {
+                model.addNewPost(this.blog.id, title, content, () => {
+                   router.navigateToPage('/blogView/' + this.blog.id); 
+                });
+            }
+        });
+        this.replace(page);
+    },
+    
     editPost(pid) {
         if (pid) {
             let editpost = model.getPost(pid);

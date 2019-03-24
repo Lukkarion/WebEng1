@@ -86,35 +86,31 @@ and open the template in the editor.
                 <h2>%name (%totalItems)</h2>
                 <div>shortDate(published) (shortDate(updated))</div>
                 <button id="showBlog">Show Blog</button>
-                <button id="newBlog">Add New Post</button>
+                <button id="createPost">Add New Post</button>
             </div>
             
             <div id="noPosts">
                 <p>There are no posts!</p>
             </div>
+            
             <div id="post-edit">
                 <form id="post-edit-form" method="get">
-                    <ul>
-                        <li>
-                        <h2 class="author">%author</h2>
-                        </li>
-                    </ul>
-                     <ul>
-                        <li>
-                            <label id="form-title-label" for="title">Titel</label>
-                            <textarea id="form-title-input" type="text"></textarea>
-                        </li>
-                        <li>
-                            <label id="form-content-label" for="content">Inhalt</label>
-                            <textarea id="form-content-input" type="text"></textarea>
-                        </li>
-                        
-                    </ul>
+                    <h2 class="author">%author</h2>
+                    
+                    <div class="input-group">
+                        <label for="title">Title</label>
+                        <textarea id="title">%title</textarea>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="content">Content</label>
+                        <textarea id="content">%content</textarea>
+                    </div>
+                    
+                    <button id="save">Save</button>
+                    <button id="cancel">Cancel</button>
                 </form>
             </div>
         </div>
     </body>
-    
-    <footer>
-    </footer>
 </html>

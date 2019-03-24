@@ -30,9 +30,6 @@ button:active{
     box-shadow: inset 0px 0px 4px 2px rgba(195,216,167,.5);
 }
 
-#head{
-}
-
 h1{
     color: #19535F;
     text-align: center;
@@ -95,6 +92,14 @@ article{
     padding: 8px 16px;
     border-radius: 5px;
     display: inline-block;
+}
+
+.input-group label {
+    display: block;
+}
+
+.input-group textfield {
+    display: block;
 }
 
 @media (min-width:1024px){
