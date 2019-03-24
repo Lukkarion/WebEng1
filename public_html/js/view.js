@@ -29,6 +29,13 @@ const blogInfos = {
         helper.setDataInfo(info, data);
         helper.setDataInfo(info, data.posts);
         
+        const showBlogButton = info.querySelector('#showBlog');
+        console.log(showBlogButton);
+        showBlogButton.addEventListener('click', function(evt) {
+            console.log('Foo');
+            evt.preventDefault();
+            presenter.showFullBlog();
+        });       
     }
 };
 

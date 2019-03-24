@@ -14,6 +14,22 @@ body{
     font-family: sans-serif;
 }
 
+button{
+    border: 3px solid #C3D8A7;
+    border-radius: 5px;
+    padding: 4px 8px;
+    background: transparent; 
+    outline: none;
+}
+
+button:hover{
+    background-color: rgba(195,216,167,.2);
+}
+
+button:active{
+    box-shadow: inset 0px 0px 4px 2px rgba(195,216,167,.5);
+}
+
 #head{
 }
 
@@ -25,6 +41,7 @@ h1{
     padding: 0;
     display: flex;
     list-style-type: none;
+    flex-wrap: wrap;
 }
 
 #navigation li{
@@ -33,9 +50,16 @@ h1{
     color: #07171A;
     padding: 8px;
     border-radius: 5px;
-    margin: 0 10px;
+    margin: 8px 10px;
     flex: 1 0 auto;
     text-align: center;
+}
+#navigation li:first-child{
+    margin-left: 0;
+}
+
+#navigation li:last-child{
+    margin-right: 0;
 }
 
 #templates{
@@ -45,5 +69,12 @@ h1{
 article{
     border-bottom: 1px solid #42727C;
     margin: 8px 0;
-    padding: 8px;
+    padding: 8px 0;
+}
+
+@media (min-width:1024px){
+    body{
+        max-width: 80vw;
+        margin: auto;
+    }
 }

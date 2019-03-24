@@ -6,7 +6,7 @@
 "use strict";
 
 const presenter = {
-    blogId: -1,
+    blog: undefined,
     owner: undefined,
     
     // Wird aufgerufen, wenn die Startseite angezeigt wird
@@ -15,7 +15,6 @@ const presenter = {
 
             // Nutzer abfragen und Anzeigenamen als owner setzen
             model.getSelf((result) => {
-                this.blogId = 1;
                 this.owner  = result.displayName;
                 console.log(`Nutzer ${this.owner} hat sich angemeldet.`); 
                 document.querySelector('h1').innerHTML = this.owner;        //WebsiteÜberschrift kommt in view?!
@@ -24,14 +23,14 @@ const presenter = {
             //Navigation rendern
             model.getAllBlogs((result) => {
                 let head = headView.render(result);
-                this.blogId = result[0].id;
-                router.navigateToPage('blogView/' + this.blogId);
+                this.blog = result[0];
+                router.navigateToPage('blogView/' + this.blog.id);
             });
                         
         } 
-        if(!model.loggedIn && this.blogId != -1) { // Wenn der Nuzter eingelogged war und sich abgemeldet hat
+        if(!model.loggedIn && this.blog !== undefined) { // Wenn der Nuzter eingelogged war und sich abgemeldet hat
             console.log(`Nutzer ${this.owner} hat sich abgemeldet.`);
-            this.blogId = -1;
+            this.blog = undefined;
             this.owner = undefined;
         }
         
@@ -48,6 +47,11 @@ const presenter = {
                 let blog = blogView.render(result);
                 this.replace(blog);
             })
+    },
+    
+    showFullBlog() {
+       const blogWindow = window.open(this.blog.url);
+       blogWindow.opener = undefined;
     },
     
     showPost(pid){
