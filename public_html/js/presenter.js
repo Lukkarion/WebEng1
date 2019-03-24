@@ -25,7 +25,7 @@ const presenter = {
             model.getAllBlogs((result) => {
                 let head = headView.render(result);
                 this.blogId = result[0].id;
-                router.navigateToPage('overview/' + this.blogId);
+                router.navigateToPage('blogView/' + this.blogId);
             });
                         
         } 

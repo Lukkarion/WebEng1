@@ -16,7 +16,6 @@ const router = {
     
     // Wird aufgerufen, wenn zu einer anderen Adresse navigiert werden soll
     navigateToPage(url){
-        console.log("navigate to page");
         history.pushState(null, "", url);
         this.handleRouting();
     },
@@ -35,7 +34,7 @@ const router = {
         let routeHandler = this.mapRouteToHandler.get(currentPage);
         if (routeHandler === undefined)
             routeHandler = this.mapRouteToHandler.get(''); //Startseite
-        routeHandler(window.location.pathname);
+        routeHandler();
     }
 };
 
@@ -48,12 +47,12 @@ const router = {
     });
     
     router.addRoute('blogView', function (url) {
-        var id = url.split('/blogView/')[1].trim();
+        var id = url.split('blogView/')[1].trim();
         presenter.showBlog(id);
     });
     
     router.addRoute('postView' , function(url) {
-        var id = url.split('/postView/')[1].trim();
+        var id = url.split('postView/')[1].trim();
         presenter.showPost(id);
     });
     
