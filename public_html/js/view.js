@@ -129,8 +129,25 @@ const helper = {
         for(let key in object) {
             cont = cont.replace("%" + key, object[key]);
         }
+        const shortDateRegex = /shortDate\(([^\)]*)\)/g;
+        const shortDateFunctions = cont.match(shortDateRegex);
+        for (let i = 0; shortDateFunctions != null && i < shortDateFunctions.length; ++i) {
+            shortDateRegex.lastIndex = 0;
+            const functionInfo = shortDateRegex.exec(shortDateFunctions[i].toString());
+            const parameter = functionInfo[1];
+            cont = cont.replace(shortDateFunctions[i], presenter.formatDate(false, object[parameter]));
+        }
+        
+        const longDateRegex = /longDate\(([^\)]*)\)/g;
+        const longDateFunctions = cont.match(longDateRegex);
+        for (let i = 0; longDateFunctions != null && i < longDateFunctions.length; ++i) {
+            longDateRegex.lastIndex = 0;
+            const functionInfo = longDateRegex.exec(longDateFunctions[i].toString());
+            const parameter = functionInfo[1];
+            cont = cont.replace(longDateFunctions[i], presenter.formatDate(true, object[parameter]));
+        }
+        
         element.innerHTML = cont;
     }
 };
-
 

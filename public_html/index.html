@@ -46,10 +46,10 @@ and open the template in the editor.
                 <article>
                     <header>
                         <h3><a>%title</a></h3>
-                        <div>%published (updated: %updated)</div>
+                        <div>shortDate(published) (updated: shortDate(updated))</div>
                     </header>
 
-                    <aside>%totalItems</aside>
+                    <p>Comments: %totalItems</p>
 
                     <footer>
                         <button id="editPost">Edit</button>
@@ -62,18 +62,18 @@ and open the template in the editor.
             <div id="postView">
                 <header>
                     <h3>%title</h3>
-                    <p>%published (updated: %updated)</p>
-                    <button id="editPost">Edit</button>
-                    <button id="deletePost">Delete</button>
+                    <p>longDate(published) (updated: longDate(updated))</p>
                 </header>
-                <div id="post-content">%content</div>     
+                <div id="post-content">%content</div>
+                <button id="editPost">Edit</button>
+                <button id="deletePost">Delete</button>
                 <div id="comments"></div>
                 <a id="overviewLink">Übersicht</a>
             </div>  
             <article id="commentView">          
                 <header>                                  
                     <h5>%displayName</h5>
-                    <div>%published</div>     
+                    <div>longDate(published)</div>     
                 </header>         
                 <p>%content</p>
                 <footer>    
@@ -83,7 +83,7 @@ and open the template in the editor.
             
             <div id="info">
                 <h2>%name (%totalItems)</h2>
-                <div>%published (%updated)</div>
+                <div>shortDate(published) (shortDate(updated))</div>
                 <button id="showBlog">Show Blog</button>
                 <button id="newBlog">Add New Post</button>
             </div>
