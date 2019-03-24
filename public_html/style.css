@@ -47,13 +47,18 @@ h1{
 #navigation li{
     box-sizing: border-box;
     background-color: #C3D8A7;
-    color: #07171A;
     padding: 8px;
     border-radius: 5px;
     margin: 8px 10px;
     flex: 1 0 auto;
     text-align: center;
 }
+
+#navigation li a {
+    color: #07171A;
+    text-decoration: none;
+}
+
 #navigation li:first-child{
     margin-left: 0;
 }

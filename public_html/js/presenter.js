@@ -40,13 +40,12 @@ const presenter = {
         console.log("Presenter: anzeigen eines Blogs");
             console.log(bid);
             model.getBlog(bid, (result) => {
-                blogInfos.render(result);
                 this.blog = result;
+                blogInfos.render(result);
             });
             
             model.getAllPostsOfBlog(bid, (result) => {
                 let blog = blogView.render(result);
-                this.blog.posts = result;
                 this.replace(blog);
             })
     },

@@ -25,19 +25,14 @@ and open the template in the editor.
             <h1>%displayname</h1>
             <nav>
                 <ul id="navigation">
-                    <li>%blog</li>
+                    <li><a>%blog</a></li>
                 </ul>
             </nav>
                     </header>
 
 
         <main>
-            <div>
-                <h2><a>%name</a><span>(%totalItems)</span></h2>
-                <div>%published (%updated)</div>
-                <button id="showBlog">Show Blog</button>
-                <button id="newBlog">Add New Post</button>
-            </div>
+            <div id="info"></div>
             <div id="main-content"></div>
         </main>
 
@@ -88,6 +83,13 @@ and open the template in the editor.
                     <button id="deleteButton">Delete</button>
                 </footer>
             </article>
+            
+            <div id="info">
+                <h2>%name (%totalItems)</h2>
+                <div>%published (%updated)</div>
+                <button id="showBlog">Show Blog</button>
+                <button id="newBlog">Add New Post</button>
+            </div>
         </div>
     </body>
 </html>

@@ -9,33 +9,39 @@ const headView = {
         console.log(headPage);
         helper.setDataInfo(headPage, data[0]);
         helper.setDataInfo(headPage, data[0].posts);
+        helper.setDataInfo(headPage, data);
         let navi = document.getElementById("navigation");
         for(let blog of data){
             let li = navi.firstElementChild.cloneNode(true);
             li.innerHTML = li.innerHTML.replace("%blog", blog.name);
+            const link = li.querySelector('a');
+            link.setAttribute('href', '/blogView/' + blog.id);
+            console.log(link);
+            link.addEventListener('click', router.handleNavigationEvent);
             navi.append(li);
         }
         navi.firstElementChild.remove();
-        helper.setDataInfo(headPage, data);
+        
         return headPage;  
     }
 };
 
 const blogInfos = {
     render (data) {
-        let info = document.querySelector('main');
-        console.log(info);
-        console.log(data);
+        let info = document.querySelector('#templates #info').cloneNode(true);
         helper.setDataInfo(info, data);
         helper.setDataInfo(info, data.posts);
         
         const showBlogButton = info.querySelector('#showBlog');
-        console.log(showBlogButton);
         showBlogButton.addEventListener('click', function(evt) {
             console.log('Foo');
             evt.preventDefault();
             presenter.showFullBlog();
-        });       
+        });
+        
+        const main = document.querySelector('main');
+        main.querySelector('#info').remove();
+        main.insertBefore(info, main.firstChild);
     }
 };
 
