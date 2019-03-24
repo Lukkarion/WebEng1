@@ -45,8 +45,14 @@ const presenter = {
             });
             
             model.getAllPostsOfBlog(bid, (result) => {
-                let blog = blogView.render(result);
-                this.replace(blog);
+                let page;
+                if (result === undefined) {
+                    page = noPostView.render();
+                } else {
+                    page = blogView.render(result);
+                }
+                
+                this.replace(page);
             })
     },
     
@@ -64,7 +70,7 @@ const presenter = {
                 const page = postView.render(post);
                 this.replace(page);
             });
-        })  
+        });
     },
     
     deleteComment(postId, commentId){
@@ -102,7 +108,9 @@ const presenter = {
     },
     
     deletePost(postId) {
-        model.deletePost(this.blog.id, postId, () => {});
+        model.deletePost(this.blog.id, postId, () => {
+            router.navigateToPage('/blogView/' + this.blog.id);
+        });
     },
 
     // Liest aus einem HTML-Dokument mit Bildern nur den Text und die URLs in <img> aus

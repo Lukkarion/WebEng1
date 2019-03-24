@@ -52,7 +52,7 @@ and open the template in the editor.
                     <aside>%totalItems</aside>
 
                     <footer>
-                        <button>Edit</button>
+                        <button id="editPost">Edit</button>
                         <button id="deletePost">Delete</button>        
                     </footer>         
                 </article>
@@ -62,12 +62,9 @@ and open the template in the editor.
             <div id="postView">
                 <header>
                     <h3>%title</h3>
-                    <span>%published (updated: %updated)</span><nav>
-                        <ul>
-                            <li><a href="html/index.hmtl">Edit</a>
-                            <li><a href="html/index.hmtl">Delete</a>
-                        </ul>
-                    </nav>             
+                    <p>%published (updated: %updated)</p>
+                    <button id="editPost">Edit</button>
+                    <button id="deletePost">Delete</button>
                 </header>
                 <div id="post-content">%content</div>     
                 <div id="comments"></div>
@@ -89,6 +86,10 @@ and open the template in the editor.
                 <div>%published (%updated)</div>
                 <button id="showBlog">Show Blog</button>
                 <button id="newBlog">Add New Post</button>
+            </div>
+            
+            <div id="noPosts">
+                <p>There are no posts!</p>
             </div>
         </div>
     </body>

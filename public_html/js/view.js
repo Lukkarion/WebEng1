@@ -57,7 +57,7 @@ const blogView = {
         console.log("View: render von blogView");
         let all = document.querySelector('#templates #overview').cloneNode(true);
         for(let p of data){
-           let post = all.querySelector('article').cloneNode(true);
+            let post = all.querySelector('article').cloneNode(true);
             helper.setDataInfo(post, p);
             helper.setDataInfo(post,p.replies);
             let title = post.querySelector('h3');
@@ -67,7 +67,7 @@ const blogView = {
                 evt.preventDefault();
                 presenter.deletePost(p.id);
                 post.remove();
-            })
+            });
             all.append(post);
         }
         all.firstElementChild.remove();
@@ -90,6 +90,12 @@ const postView = {
         overviewLink.setAttribute('href', '/blogView/' + presenter.blog.id);
         overviewLink.addEventListener('click', router.handleNavigationEvent);
         
+        const deleteButton = page.querySelector('#deletePost');
+        deleteButton.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            presenter.deletePost(data.id);
+        });
+        
         return page;        
     }
 };
@@ -110,6 +116,12 @@ const commentView = {
         return comment;
     }
 };
+
+const noPostView = {
+    render() {
+        return document.querySelector('#templates #noPosts').cloneNode(true);
+    }
+}
 
 const helper = {
     setDataInfo(element, object) {
