@@ -41,10 +41,12 @@ const presenter = {
             console.log(bid);
             model.getBlog(bid, (result) => {
                 blogInfos.render(result);
+                this.blog = result;
             });
             
             model.getAllPostsOfBlog(bid, (result) => {
                 let blog = blogView.render(result);
+                this.blog.posts = result;
                 this.replace(blog);
             })
     },
@@ -57,11 +59,10 @@ const presenter = {
     showPost(pid){
         console.log("Presenter: anzeigen der Detailansicht eines Posts");
         model.getPost(pid, (result) => {
-            console.log(result);
-            let page = postView.render(result);
-            model.getAllCommentsOfPost(this.blogId, pid, (result) => {
-                page.append(commentView.render(result));
-                console.log(page);
+            const post = result;
+            model.getAllCommentsOfPost(this.blog.id, pid, (result) => {
+                post.comments = result;
+                const page = postView.render(post);
                 this.replace(page);
             });
         })  

@@ -43,23 +43,19 @@ const blogView = {
     render(data) {
         
         console.log(data);
-        let handleEvent = function (event) {
-           // event.preventDefault();
+        const createHandleEvent = (post) => function (event) {
             console.log("handle");
-            let tit = event.target.parentElement;
-            router.navigateToPage("postView/" + tit.id);
+            router.navigateToPage("/postView/" + post.id);
         };
         
         console.log("View: render von blogView");
-        let all = document.getElementById("overview");
-        all.removeAttribute("id");
+        let all = document.querySelector('#templates #overview').cloneNode(true);
         for(let p of data){
-           let post = document.querySelector('article').cloneNode(true);
+           let post = all.querySelector('article').cloneNode(true);
             helper.setDataInfo(post, p);
             helper.setDataInfo(post,p.replies);
             let title = post.querySelector('h3');
-            title.setAttribute("id",`${p.id}`);
-            title.addEventListener("click", handleEvent);
+            title.addEventListener("click", createHandleEvent(p));
             all.append(post);
         }
         all.firstElementChild.remove();
@@ -71,9 +67,17 @@ const blogView = {
 const postView = {
     render(data) {
         console.log("View: render von postView");        
-        let page = document.getElementById('post').cloneNode(true);
+        let page = document.querySelector('#templates #postView').cloneNode(true);
         helper.setDataInfo(page, data);
-        document.getElementById('post').remove();
+        let comments = page.querySelector('#comments');
+        for(let i in data.comments) {
+            const renderedComment = commentView.render(data.comments[i]);
+            comments.append(renderedComment);
+        }
+        const overviewLink = page.querySelector('#overviewLink');
+        overviewLink.setAttribute('href', '/blogView/' + presenter.blog.id);
+        overviewLink.addEventListener('click', router.handleNavigationEvent);
+        
         return page;        
     }
 };
@@ -81,17 +85,10 @@ const postView = {
 const commentView = {
     render(data) {
         console.log("View: render con commentView");
-        let post = document.getElementById("postView");
-        post.removeAttribute("id");
-        for(let i in data){
-            let page = post.querySelector('article').cloneNode(true);
-            helper.setDataInfo(page, data[i]);
-            helper.setDataInfo(page, data[i].author);
-            console.log(i);
-            post.append(page);
-        }
-        post.firstElementChild.remove();
-        return post;
+        let comment = document.querySelector('#templates #commentView').cloneNode(true);
+        helper.setDataInfo(comment, data);
+        helper.setDataInfo(comment, data.author);
+        return comment;
     }
 };
 

@@ -65,33 +65,29 @@ and open the template in the editor.
             <hr>
             <!--  PostDetailAnsicht -->
             <div id="postView">
-                <div id="post">
-                    <header>
-                        <h3>%title</h3>
-                        <span>%published (updated: %updated)</span>                  
-                    </header>
-                    <div id="post-content">%content</div>
-                    <footer>
-                        <nav>
-                            <ul>
-                                <li><a href="html/index.hmtl">Edit</a>
-                                <li><a href="html/index.hmtl">Delete</a>
-                            </ul>
-                        </nav> 
-                    </footer>
-                </div>
-                <article>             
-                    <header>                                  
-                        <h5>%displayName</h5>
-                        <div>%published</div>     
-                    </header>         
-                    <p>%content</p>
-                    <footer>    
-                        <button>Delete</button>
-                    </footer>
-                </article>
-                <div><a href="/blogView">Übersicht</a></div>
-            </div>
+                <header>
+                    <h3>%title</h3>
+                    <span>%published (updated: %updated)</span><nav>
+                        <ul>
+                            <li><a href="html/index.hmtl">Edit</a>
+                            <li><a href="html/index.hmtl">Delete</a>
+                        </ul>
+                    </nav>             
+                </header>
+                <div id="post-content">%content</div>     
+                <div id="comments"></div>
+                <a id="overviewLink">Übersicht</a>
+            </div>  
+            <article id="commentView">          
+                <header>                                  
+                    <h5>%displayName</h5>
+                    <div>%published</div>     
+                </header>         
+                <p>%content</p>
+                <footer>    
+                    <button>Delete</button>
+                </footer>
+            </article>
         </div>
     </body>
 </html>
