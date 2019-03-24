@@ -21,7 +21,7 @@ and open the template in the editor.
         <header id="head">
             <button id="sign-in-or-out-button">Anmelden</button>
             <div id="auth-status"></div>
-            <h1>Nutzer</h1>
+            <h1>%displayname</h1>
             <nav>
                 <ul id="navigation">
                     <li>%blog</li>
@@ -44,17 +44,15 @@ and open the template in the editor.
         <footer>
         </footer>
 
-        <div id="templates" >
+        <div id="templates" hidden>
             <!-- BlogPostUebersicht -->
             <div id="overview">
-
                 <article>
                     <header>
                         <h3><a>%title</a></h3>
                         <div>%published (updated: %updated)</div>
                     </header>
 
-                    <img src="https://via.placeholder.com/300x150" alt="Bild" />
                     <aside>%totalItems</aside>
 
                     <footer>

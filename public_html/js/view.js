@@ -5,6 +5,7 @@ const headView = {
         console.log("View: render Header");
         
         let headPage = document.getElementById('head');
+        console.log(data);
         console.log(headPage);
         helper.setDataInfo(headPage, data[0]);
         helper.setDataInfo(headPage, data[0].posts);
@@ -16,7 +17,6 @@ const headView = {
         }
         navi.firstElementChild.remove();
         helper.setDataInfo(headPage, data);
-        
         return headPage;  
     }
 };
@@ -25,6 +25,10 @@ const blogInfos = {
     render (data) {
         let info = document.querySelector('main');
         console.log(info);
+        console.log(data);
+        helper.setDataInfo(info, data);
+        helper.setDataInfo(info, data.posts);
+        
     }
 };
 
@@ -36,7 +40,7 @@ const blogView = {
            // event.preventDefault();
             console.log("handle");
             let tit = event.target.parentElement;
-            router.navigateToPage("/postView/" + tit.id);
+            router.navigateToPage("postView/" + tit.id);
         };
         
         console.log("View: render von blogView");

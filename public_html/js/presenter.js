@@ -15,29 +15,19 @@ const presenter = {
 
             // Nutzer abfragen und Anzeigenamen als owner setzen
             model.getSelf((result) => {
-            this.owner  = result.displayName;
-            console.log(`Nutzer ${this.owner} hat sich angemeldet.`);
-            this.blogId = 1;
-            
-            document.querySelector('h1').innerHTML = this.owner;
+                this.blogId = 1;
+                this.owner  = result.displayName;
+                console.log(`Nutzer ${this.owner} hat sich angemeldet.`); 
+                document.querySelector('h1').innerHTML = this.owner;        //WebsiteÜberschrift kommt in view?!
             });
             
-            model.getAllBlogs((result) => {     
-//                result.sort(function(a,b) {
-//                    if(a.updated < b.updated) return -1;
-//                    if(a.updated == b.updated) return 0;
-//                    if(a.updated > b.updated) return 1;
-//                });
-//                console.log(result[0].updated);
-//                console.log(result[1].updated);
-//                console.log(result[2].updated);
-                
-                router.navigateToPage("/blogView/" + result[2].id);
-                //model.getAllPostsOfBlog(result[2].id, (result) => {
-                //    this.showPost(result[0].id);
-                //});
+            //Navigation rendern
+            model.getAllBlogs((result) => {
+                let head = headView.render(result);
+                this.blogId = result[0].id;
+                router.navigateToPage('overview/' + this.blogId);
             });
-            
+                        
         } 
         if(!model.loggedIn && this.blogId != -1) { // Wenn der Nuzter eingelogged war und sich abgemeldet hat
             console.log(`Nutzer ${this.owner} hat sich abgemeldet.`);
@@ -46,15 +36,7 @@ const presenter = {
         }
         
     },
-    
-    showHead() {
-        console.log("Presenter: anzeigen eines Heads");
-            model.getAllBlogs((result) => {
-                let page = headView.render(result);
-            })
-    
-    },
-    
+        
     showBlog(bid) {
         console.log("Presenter: anzeigen eines Blogs");
             console.log(bid);
@@ -63,10 +45,9 @@ const presenter = {
             });
             
             model.getAllPostsOfBlog(bid, (result) => {
-                let page = blogView.render(result);
-                this.replace(page);
+                let blog = blogView.render(result);
+                this.replace(blog);
             })
-    
     },
     
     showPost(pid){
@@ -93,17 +74,6 @@ const presenter = {
             main.append(page);
         }
     },
-
-    // Gibt den Post mit der Id bid aus
-     renderPostsOfBlog(bid) {
-        model.getAllPostsOfBlog(bid, (result) => {
-                for (let post of result) {
-                    console.log(post.title);
-                    console.log(post.updated);
-                    console.log(post.content);
-                }
-        });
-     },
 
     // Formatiert den Datum-String in date in zwei mögliche Datum-Strings: 
     // long = false: 24.10.2018
