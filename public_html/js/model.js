@@ -101,7 +101,7 @@ const model = {
             'method': 'DELETE',
             'path': path
         });
-        this.commentMap.remove(cid);
+        this.commentMap.delete(cid);
         request.execute(callback);
     },
 

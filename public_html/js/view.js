@@ -85,9 +85,16 @@ const postView = {
 const commentView = {
     render(data) {
         console.log("View: render con commentView");
+        console.log(data);
         let comment = document.querySelector('#templates #commentView').cloneNode(true);
         helper.setDataInfo(comment, data);
         helper.setDataInfo(comment, data.author);
+        const deleteButton = comment.querySelector('#deleteButton');
+        deleteButton.addEventListener('click', function(evt){
+            evt.preventDefault();
+            presenter.deleteComment(data.post.id, data.id);
+            comment.remove();
+        });
         return comment;
     }
 };

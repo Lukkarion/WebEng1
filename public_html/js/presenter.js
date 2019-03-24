@@ -68,6 +68,10 @@ const presenter = {
         })  
     },
     
+    deleteComment(postId, commentId){
+        model.deleteComment(this.blog.id, postId, commentId, function(){});
+    },
+    
     replace(page) {
         console.log("replace page");
         let main = document.getElementById('main-content');
