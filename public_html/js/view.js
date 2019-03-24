@@ -62,6 +62,12 @@ const blogView = {
             helper.setDataInfo(post,p.replies);
             let title = post.querySelector('h3');
             title.addEventListener("click", createHandleEvent(p));
+            const deleteButton = post.querySelector('#deletePost');
+            deleteButton.addEventListener('click', (evt) => {
+                evt.preventDefault();
+                presenter.deletePost(p.id);
+                post.remove();
+            })
             all.append(post);
         }
         all.firstElementChild.remove();

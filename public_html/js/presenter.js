@@ -100,6 +100,10 @@ const presenter = {
         }
 
     },
+    
+    deletePost(postId) {
+        model.deletePost(this.blog.id, postId, () => {});
+    },
 
     // Liest aus einem HTML-Dokument mit Bildern nur den Text und die URLs in <img> aus
     createPostContent(content) {
