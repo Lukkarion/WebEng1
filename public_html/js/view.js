@@ -139,7 +139,7 @@ const noPostView = {
 
 
 const editView = {
-    render({ title = '', content = '', author = '', saveCallback = () => {} } = {}) {
+    render({ title = '', content = '', author = '', postId = '', saveCallback = () => {} } = {}) {
         console.log("View: render von editView");        
         let edit = document.querySelector('#templates #post-edit').cloneNode(true);
         helper.setDataInfo(edit, {title, content, author});
@@ -156,7 +156,7 @@ const editView = {
         const cancelButton = edit.querySelector('#cancel');
         cancelButton.addEventListener('click', (evt) => {
             evt.preventDefault();
-            router.navigateToPage('/blogView/' + presenter.blog.id);
+            router.navigateToPage('/postView/' + postId);
         });
         
         return edit;

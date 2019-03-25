@@ -104,6 +104,15 @@ article{
     color: #19535F;
 }
 
+label, input {
+    font: inherit;
+}
+
+#content {
+    width: 80vw;
+    height: 50vw;
+}
+
 @media (min-width:1024px){
     body{
         max-width: 80vw;

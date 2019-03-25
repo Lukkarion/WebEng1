@@ -78,6 +78,7 @@ const presenter = {
                 author: this.owner,
                 title: result.title,
                 content: result.content,
+                postId: postId,
                 saveCallback: (title, content) => {
                     model.updatePost(this.blog.id, postId, title, content, () => {
                        router.navigateToPage('/blogView/' + this.blog.id); 
