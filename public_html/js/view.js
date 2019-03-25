@@ -5,8 +5,6 @@ const headView = {
         console.log("View: render Header");
         
         let headPage = document.getElementById('head');
-        console.log(data);
-        console.log(headPage);
         helper.setDataInfo(headPage, data[0]);
         helper.setDataInfo(headPage, data[0].posts);
         helper.setDataInfo(headPage, data);
@@ -16,7 +14,6 @@ const headView = {
             li.innerHTML = li.innerHTML.replace("%blog", blog.name);
             const link = li.querySelector('a');
             link.setAttribute('href', '/blogView/' + blog.id);
-            console.log(link);
             link.addEventListener('click', router.handleNavigationEvent);
             navi.append(li);
             li.setAttribute('href', 'blogView/' + blog.id);
@@ -30,13 +27,13 @@ const headView = {
 
 const blogInfos = {
     render (data) {
+        console.log("View: render von blogInfos");
         let info = document.querySelector('#templates #info').cloneNode(true);
         helper.setDataInfo(info, data);
         helper.setDataInfo(info, data.posts);
         
         const showBlogButton = info.querySelector('#showBlog');
         showBlogButton.addEventListener('click', function(evt) {
-            console.log('Foo');
             evt.preventDefault();
             presenter.showFullBlog();
         });
@@ -56,7 +53,6 @@ const blogInfos = {
 const blogView = {
     render(data) {
         
-        console.log(data);
         const createHandleEvent = (post) => function (event) {
             console.log("handle");
             router.navigateToPage("/postView/" + post.id);
@@ -100,7 +96,7 @@ const postView = {
             comments.append(renderedComment);
         }
         const overviewLink = page.querySelector('#overviewLink');
-        overviewLink.setAttribute('href', 'blogView/' + presenter.blog.id);
+        overviewLink.setAttribute('href', '/blogView/' + presenter.blog.id);
         overviewLink.addEventListener('click', router.handleNavigationEvent);
         
         const deleteButton = page.querySelector('#deletePost');
@@ -121,7 +117,6 @@ const postView = {
 const commentView = {
     render(data) {
         console.log("View: render von commentView");
-        console.log(data);
         let comment = document.querySelector('#templates #commentView').cloneNode(true);
         helper.setDataInfo(comment, data);
         helper.setDataInfo(comment, data.author);

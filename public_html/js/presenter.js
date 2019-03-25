@@ -38,7 +38,6 @@ const presenter = {
         
     showBlog(bid) {
         console.log("Presenter: anzeigen eines Blogs");
-            console.log(bid);
             model.getBlog(bid, (result) => {
                 this.blog = result;
                 blogInfos.render(result);
@@ -75,7 +74,6 @@ const presenter = {
     
     showEditPost(postId) {
         model.getPost(postId, (result) => {
-            console.log(result);
             const page = editView.render({
                 author: this.owner,
                 title: result.title,
@@ -105,7 +103,6 @@ const presenter = {
     editPost(pid) {
         if (pid) {
             let editpost = model.getPost(pid);
-            console.log(editpost);
             this.replacePage(editView.render(editpost));
             fillForm(editpost.title, editpost.content);
         } else {
